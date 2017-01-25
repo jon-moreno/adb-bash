@@ -15,3 +15,5 @@ adb shell screencap -p | sed 's/\r$//' > screen1.png
 #have to make it the file from before
 #Guess we'll hardcode the save location to keep things organized
 #adb pull /sdcard/Pictures/Screenshots/screen1.png ~/Pictures/Android Screenshots/
+
+exit 0

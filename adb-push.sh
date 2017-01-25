@@ -10,7 +10,15 @@
 adb shell pm clear com.libraryforall
 adb shell pm uninstall com.libraryforall
 
+#get the file
+#wget https://releases.libraryforall.org/android/reader/2.0.0-beta/ARN-2.0.0-RW-rc.12.apk
+
 #ask for location of apk/version number. tbd
 adb install ~/Downloads/ARN-2.0.0-RW-rc.12.apk
+
+#Our app requires networking
+adb shell svc wifi enable
+
+#Potentially could push Wi-Fi install if we automate device finding
 
 exit 0
