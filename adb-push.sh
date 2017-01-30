@@ -3,12 +3,17 @@
 #Requires adb (duh) & debugging already on
 
 url="https://releases.libraryforall.org/android/reader/2.0.0-beta/"
-apk="ARN-2.0.0-RW-rc.13.apk"
-vendor="com.libraryforall"
+apk="ARN-2.0.0-RW-rc.15.apk"
+vendor="org.libraryforall.libraryforall.rw"
+#"com.libraryforall"
 
 #get the file
-echo $url$apk
-wget -N $url$apk
+#only downloads if server file is modified
+#options
+##--timestamping
+##--quiet
+wget -Nq $url$apk
+
 
 #if device exists
 #adb devices
@@ -22,6 +27,7 @@ adb shell pm uninstall $vendor
 adb install $apk
 
 #Our app requires networking
+#Enable Wi-Fi
 adb shell svc wifi enable
 
 #Potentially could push Wi-Fi install if we automate device finding
