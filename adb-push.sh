@@ -2,19 +2,24 @@
 #Automate installation of APKs
 #Requires adb (duh) & debugging already on
 
+url="https://releases.libraryforall.org/android/reader/2.0.0-beta/"
+apk="ARN-2.0.0-RW-rc.13.apk"
+vendor="com.libraryforall"
+
+#get the file
+echo $url$apk
+wget -N $url$apk
+
 #if device exists
 #adb devices
 
 #if success message, go to next part
 #echo where fails
-adb shell pm clear com.libraryforall
-adb shell pm uninstall com.libraryforall
-
-#get the file
-#wget https://releases.libraryforall.org/android/reader/2.0.0-beta/ARN-2.0.0-RW-rc.12.apk
+adb shell pm clear $vendor
+adb shell pm uninstall $vendor
 
 #ask for location of apk/version number. tbd
-adb install ~/Downloads/ARN-2.0.0-RW-rc.12.apk
+adb install $apk
 
 #Our app requires networking
 adb shell svc wifi enable
