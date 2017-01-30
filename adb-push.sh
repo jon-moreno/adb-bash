@@ -2,18 +2,25 @@
 #Automate installation of APKs
 #Requires adb (duh) & debugging already on
 
+echo -n "Release Candidate: "
+read version
+
 url="https://releases.libraryforall.org/android/reader/2.0.0-beta/"
-apk="ARN-2.0.0-RW-rc.15.apk"
+apk="ARN-2.0.0-RW-rc.$version.apk"
 vendor="org.libraryforall.libraryforall.rw"
+
 #"com.libraryforall"
+
 
 #get the file
 #only downloads if server file is modified
 #options
 ##--timestamping
 ##--quiet
-wget -Nq $url$apk
+#wget -Nq $url$apk
 
+#Verbose version for debugging
+wget -N $url$apk
 
 #if device exists
 #adb devices
