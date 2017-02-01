@@ -2,41 +2,46 @@
 #Automate installation of APKs
 #Requires adb (duh) & debugging already on
 
-echo -n "Release Candidate: "
+#echo -n "Release Candidate: "
 #read version
-version=$1
+serial=$1
+version=$2
 
 url="https://releases.libraryforall.org/android/reader/2.0.0-beta/"
-apk="ARN-2.0.0-RW-rc.$version.apk"
+apk="ARN-2.0.0-RW-rc-$version.apk"
 vendor="org.libraryforall.libraryforall.rw"
-
-#"com.libraryforall"
-
+oldvendor="com.libraryforall"
 
 #get the file
 #only downloads if server file is modified
-#options
+#options are:
+##--continue -c
 ##--timestamping
 ##--quiet
-wget -Nq $url$apk
+#wget -Nq $url$apk
 
 #Verbose version for debugging
-#wget -N $url$apk
+wget -N $url$apk
 
 #if device exists
 #adb devices
 
 #if success message, go to next part
 #echo where fails
-adb shell pm clear $vendor
-adb shell pm uninstall $vendor
+adb -s $serial shell pm clear $vendor
+adb -s $serial shell pm uninstall $vendor
+
+#remove the old vendor
+adb -s $serial shell pm clear $oldvendor
+adb -s $serial shell pm uninstall $oldvendor
+
 
 #ask for location of apk/version number. tbd
-adb install $apk
+adb -s $serial install $apk
 
 #Our app requires networking
 #Enable Wi-Fi
-adb shell svc wifi enable
+adb -s $serial shell svc wifi enable
 
 #Potentially could push Wi-Fi install if we automate device finding
 
