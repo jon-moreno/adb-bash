@@ -1,1 +1,2 @@
-#Open multiple console windows/tabs possible?
+echo $1
+adb -s $1 logcat *:S ReactNative:V ReactNativeJS:V
