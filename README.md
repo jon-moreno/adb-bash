@@ -8,4 +8,5 @@ Bash scripts to automate manual testing until we set up device administration.
 
 ###COMPLETED
 ✔ Automate pushing new APKs to attached devices
+
 ✔ Open RN debugging for attached devices in one command
