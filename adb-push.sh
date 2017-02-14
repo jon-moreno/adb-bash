@@ -7,9 +7,11 @@ version=$1
 
 #I should store these in a text file
 url="https://releases.libraryforall.org/android/reader/2.0.0-beta/"
-apk="ARN-2.0.0-RW-rc-$version.apk"
+apk="ARN-2.0.0-RW-rc.$version.apk"
+#ARN-2.0.0-RW-rc-$version.apk
 vendor="org.libraryforall.libraryforall.rw"
 oldvendor="com.libraryforall"
+counter=0
 
 #Verbose + Only downloads if server file is modified
 wget -N $url$apk
@@ -23,6 +25,7 @@ for device in $devices; do
 		then
 
 			echo $device
+			echo "======="
 			#For all devices attached,
 			#creates new window in system default terminal
 			#x-terminal-emulator -hold -e ./adb-rnlog.sh $device
@@ -40,11 +43,15 @@ for device in $devices; do
 			#Our app requires networking
 			adb -s $device shell svc wifi enable
 
-			
+			let counter+=1
 
 
 	fi
 done
+
+echo "$counter devices installed"
+
+#Perhaps instead of Wi-Fi connection, do Bluetooth to limit IP address range to only BT paired Android Devices
 
 exit 0
 
