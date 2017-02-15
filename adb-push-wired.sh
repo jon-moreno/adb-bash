@@ -1,21 +1,8 @@
 #!/bin/bash
 #Automate installation of APKs
 #Requires adb (duh) & debugging already on.
-#Might have to make a standalone wireless version
 
-#Establish adb connection
-
-#Thanks udo for the grep cmd:
-#http://superuser.com/a/202835/697959
-
-#Finds all IPs on LAN. To be optimized.
-ip_addresses=$(nmap -sn 192.168.0.0/24 | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
-
-for ip in $ip_addresses; do
-	adb connect $ip
-done
-
-devices=$(adb devices) #Why not grab the successful connections from before?
+devices=$(adb devices)
 version=$1
 
 #I should store these in a text file
@@ -53,7 +40,9 @@ for device in $devices; do
 			#Our app requires networking
 			adb -s $device shell svc wifi enable
 
+
 			#Open TCP port 5555 for wireless adb
+			#Hangs on Phantom
 			#adb -s $device tcpip 5555
 
 			let counter+=1

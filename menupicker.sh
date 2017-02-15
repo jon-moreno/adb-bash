@@ -16,6 +16,7 @@ printf ">>>"
 read choice
 echo ""
 
+#open this in own terminal and loop this program
 bash ${menu[choice]}
 
 # function function(){
