@@ -1,5 +1,6 @@
 #!/bin/bash
-#Automate installation of APKs
+#.SH DESCRIPTION
+#Automate wireless installation of APKs
 #Requires adb (duh) & debugging already on.
 #Might have to make a standalone wireless version
 
@@ -50,11 +51,8 @@ for device in $devices; do
 
 			adb -s $device install $apk
 
-			#Our app requires networking
-			adb -s $device shell svc wifi enable
-
-			#Open TCP port 5555 for wireless adb
-			#adb -s $device tcpip 5555
+			#Don't need since wi-fi is already on
+			#adb -s $device shell svc wifi enable
 
 			let counter+=1
 
