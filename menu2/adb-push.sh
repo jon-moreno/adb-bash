@@ -51,11 +51,8 @@ for device in $devices; do
 
 			adb -s $device install $apk
 
-			#Our app requires networking
-			adb -s $device shell svc wifi enable
-
-			#Open TCP port 5555 for wireless adb
-			#adb -s $device tcpip 5555
+			#Don't need since wi-fi is already on
+			#adb -s $device shell svc wifi enable
 
 			let counter+=1
 
@@ -70,4 +67,3 @@ echo "$counter devices installed"
 #Device will appear twice if networked & plugged in
 
 exit 0
-

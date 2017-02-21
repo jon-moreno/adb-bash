@@ -39,6 +39,13 @@ function generate_menu () {
 
 	printf ">>>"
 	read choice
+
+	#Accept parameters for script
+	if [ "$choice" != "$counter" ]; then
+		printf "Param(s): "
+		read params
+	fi
+
 	echo ""
 }
 
@@ -67,7 +74,7 @@ while [[ "$choosing"==true ]]; do
 		choosing=false
 		let next_menu-=1
 		#echo "Your choice was: "${pages[next_menu]}${menu[choice]}
-		x-terminal-emulator -hold -e bash ${pages[next_menu]}${menu[choice]}
+		x-terminal-emulator -hold -e bash ${pages[next_menu]}${menu[choice]} $params
 		exit 0
 	fi
 done
