@@ -75,8 +75,8 @@ while [[ "$choosing"==true ]]; do
 		let next_menu-=1
 		#echo "Your choice was: "${pages[next_menu]}${menu[choice]}
 		clear
-		source ${pages[next_menu]}${menu[choice]} $params
-		#x-terminal-emulator -hold -e ./${pages[next_menu]}${menu[choice]} $params
+		#source ${pages[next_menu]}${menu[choice]} $params
+		x-terminal-emulator -hold -e ./${pages[next_menu]}${menu[choice]} $params
 		exit 0
 	fi
 done

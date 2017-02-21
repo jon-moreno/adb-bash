@@ -65,5 +65,5 @@ echo "$counter devices installed"
 #Perhaps instead of Wi-Fi connection, do Bluetooth to limit IP address range to only BT paired Android Devices
 #adb devices shows device as IP address. How will I know which one is which?
 #Device will appear twice if networked & plugged in
-
+read
 exit 0
