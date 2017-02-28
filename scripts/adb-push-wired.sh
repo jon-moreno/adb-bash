@@ -46,6 +46,7 @@ for device in $devices; do
 done
 
 echo "$counter devices installed"
+read
 
 exit 0
 

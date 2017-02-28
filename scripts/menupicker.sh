@@ -22,7 +22,7 @@ function generate_menu () {
 	clear
 	echo "Make a selection"
 
-	shellscripts=$(ls $1)
+	shellscripts=$(ls $1 | grep .sh)
 	let counter=0
 
 	for shellscript in $shellscripts; do
