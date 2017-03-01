@@ -12,7 +12,6 @@
 ##Screenshot_YYYY-mm-DD-HH-MM-SS.png
 now=$(date +"%F-%H-%M-%S")
 generated_filename="Screenshot_"$now".png"
-directory=""
 
 #The Pixel C produces invalid images with the previous command
 #if [ "$#" eq 1 ]; then
@@ -20,7 +19,7 @@ directory=""
 
 serial=$1
 #Works with Linux + Mac
-adb -s $serial shell screencap -p | perl -pe 's/\x0D\x0A/\x0A/g' > $generated_filename
+adb -s $serial shell screencap -p | perl -pe 's/\x0D\x0A/\x0A/g' > ~/screenshots/$generated_filename
 
 #elif [ "$#" eq 2 ]; then
 #

@@ -1,19 +1,31 @@
 #!/bin/bash
 #.SH DESCRIPTION
-#Contains the loop for finding devices
+#Finds devices then returns values or runs commands
+
+cd "${0%/*}"
 
 cmd=$1
-devices=$(adb devices)
 
-#Strip header
+#Find devices using adb then strip header
+devices=$(adb devices)
 devices=${devices#List of devices attached}
 
+function returnvalue () {
 for device in $devices; do
 	#only do commands w. serials
 	if [ $device != "device" ]
 		then
+			#Acts as a return value for calling script
+			echo $device
+	fi
+done
+}
 
-			#module specific code
+function runcommand () {
+for device in $devices; do
+	#only do commands w. serials
+	if [ $device != "device" ]
+		then
 
 			echo adb -s $device $cmd
 			echo "=================="
@@ -37,3 +49,15 @@ for device in $devices; do
 			#let counter+=1
 	fi
 done
+}
+
+case "$1" in
+		"")
+			returnvalue
+			;;
+		 
+		*)
+			runcommand
+			;;
+ 
+esac

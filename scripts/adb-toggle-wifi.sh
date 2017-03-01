@@ -7,6 +7,7 @@
 
 #Commands that work w.o root
 #Opens/Restarts wifi settings screen
+cd "${0%/*}"
 ./deviceparser.sh 'shell am start -a android.intent.action.MAIN -n com.android.settings/.wifi.WifiSettings'
 
 #Simulates D-pad up, d-pad up, d-pad center

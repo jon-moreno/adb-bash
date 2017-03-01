@@ -6,17 +6,17 @@
 #Platform independently
 
 #for device in devices
-devices=$(adb devices)
+#devices=$(adb devices)
 #device_string=""
 #cmd="gnome-terminal"
 #Strip header
-devices=${devices#List of devices attached}
+#devices=${devices#List of devices attached}
 
-for device in $devices; do
+#for device in $devices; do
 	#only do commands w. serials
-	if [ $device != "device" ]
-		then
-			echo "$device"
+#	if [ $device != "device" ]
+#		then
+#			echo "$device"
 			#store in string
 			#put string into array
 			#will automatically parse
@@ -30,7 +30,11 @@ for device in $devices; do
 			#need to set dynamic path to adb-rnlog
 			#doesn't work unless shell already in path
 			#possibility to send working directory in gnome-terminal
-			x-terminal-emulator -hold -e ./adb-rnlog.sh $device
+			cd "${0%/*}"
+			devices=$(./deviceparser.sh)
+			echo $devices
+			#./deviceparser.sh 
+			#'x-terminal-emulator -hold -e ./adb-rnlog.sh $device'
 			
 			#Will open one at a time
 			#xterm -hold -T $device -e bash adb-rnlog.sh $device
@@ -38,9 +42,9 @@ for device in $devices; do
 			#gnome-terminal, which doesn't want to open tabs
 			#x-terminal-emulator --tab -hold -e ./adb-rnlog.sh $device x-terminal-emulator -hold --tab
 			#gnome-terminal --tab -e ./adb-rnlog.sh $device --tab
-	fi
-done
-exit 0
+#	fi
+#done
+#exit 0
 #echo $device_string
 #device_arr=($device_string)
 #counter=0
