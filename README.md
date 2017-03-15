@@ -17,6 +17,11 @@ Bash scripts to automate manual testing until we set up device administration.
 
 ✔ Open RN debugging for attached devices in one command
 
-~~~✔ Create an interface for launching scripts~~~
+~~✔ Create an interface for launching scripts~~
 
 ✔ Shut down & sleep devices
+
+###Roadmap
+- 2.0.0 release: Modularized scripts
+- 2.1.0 release: Zenity GUI
+- 3.0.0 release: Merged & Contextualized scripts

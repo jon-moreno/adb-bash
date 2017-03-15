@@ -10,3 +10,14 @@ adb -s $device shell pm clear $vendor
 adb -s $device shell pm uninstall $vendor
 adb -s $device shell pm clear $oldvendor
 adb -s $device shell pm uninstall $oldvendor
+
+#case "$1" in
+#		"")
+#			returnvalue
+#			;;
+#		 
+#		*)
+#			runcommand
+#			;;
+# 
+#esac

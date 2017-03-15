@@ -18,13 +18,16 @@ for device in $devices; do
 			#creates new window in system default terminal
 			#x-terminal-emulator -hold -e ./adb-rnlog.sh $device
 
+
+			#./adb-toggle-wifi
+			./deviceparser 'tcpip 5555'
 			#Our app requires networking
-			adb -s $device shell svc wifi enable
+			#adb -s $device shell svc wifi enable
 
 			#Open TCP port 5555 for wireless adb
-			adb -s $device tcpip 5555
+			#adb -s $device tcpip 5555
 
-			let counter+=1
+			#let counter+=1
 
 
 	fi
