@@ -31,39 +31,37 @@ counter=0
 wget -N $url$apk
 
 #Strip header
-devices=${devices#List of devices attached}
+#devices=${devices#List of devices attached}
+devices=$(./deviceparser.sh)
 #Open multiple terminals platform independently
 for device in $devices; do
-	#only do commands w. serials
-	if [ $device != "device" ]
-		then
 
-			echo $device
-			echo "======="
-			#For all devices attached,
-			#creates new window in system default terminal
-			#x-terminal-emulator -hold -e ./adb-rnlog.sh $device
+	echo $device
+	echo "======="
+	#For all devices attached,
+	#creates new window in system default terminal
+	#x-terminal-emulator -hold -e ./adb-rnlog.sh $device
 
-			adb -s $device shell pm clear $vendor
-			adb -s $device shell pm uninstall $vendor
-			adb -s $device shell pm clear $oldvendor
-			adb -s $device shell pm uninstall $oldvendor
+	./adb-clear.sh $device
+	#adb -s $device shell pm clear $vendor
+	#adb -s $device shell pm uninstall $vendor
+	#adb -s $device shell pm clear $oldvendor
+	#adb -s $device shell pm uninstall $oldvendor
 
-			adb -s $device install $apk
+	adb -s $device install $apk
 
-			#Don't need since wi-fi is already on
-			#adb -s $device shell svc wifi enable
+	#Don't need since wi-fi is already on
+	#adb -s $device shell svc wifi enable
 
-			let counter+=1
+	let counter+=1
 
-
-	fi
 done
 
 echo "$counter devices installed"
 
-#Perhaps instead of Wi-Fi connection, do Bluetooth to limit IP address range to only BT paired Android Devices
 #adb devices shows device as IP address. How will I know which one is which?
+##IP addresses listed first
+##adb devices -l
 #Device will appear twice if networked & plugged in
 read
 exit 0

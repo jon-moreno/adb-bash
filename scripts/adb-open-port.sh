@@ -20,7 +20,7 @@ for device in $devices; do
 
 
 			#./adb-toggle-wifi
-			./deviceparser 'tcpip 5555'
+			./deviceparser.sh 'tcpip 5555'
 			#Our app requires networking
 			#adb -s $device shell svc wifi enable
 
