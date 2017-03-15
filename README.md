@@ -1,4 +1,4 @@
-# adb-bash
+# adb-bash v2.0.0
 Bash scripts to automate manual testing until we set up device administration.
 
 ### GOALS
