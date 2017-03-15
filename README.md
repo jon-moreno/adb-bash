@@ -1,16 +1,17 @@
 # adb-bash
 Bash scripts to automate manual testing until we set up device administration.
 
-###GOALS
+### GOALS
 - Make use of appropriate number of terminal windows
 - Automate restarting RN debugging
 
-####In Progress
+#### In Progress
 - Reduce no. of modules or organize them
 - Improve screenshotting
 - Create a GUI
 
-###COMPLETED
+### COMPLETED
+
 ✔ Automate pushing new APKs to attached devices
     
 > ✔ Wirelessly
@@ -21,7 +22,7 @@ Bash scripts to automate manual testing until we set up device administration.
 
 ✔ Shut down & sleep devices
 
-###Roadmap
-- 2.0.0 release: Modularized scripts
+### Roadmap
+- ~~2.0.0 release: Modularized scripts~~
 - 2.1.0 release: Zenity GUI
 - 3.0.0 release: Merged & Contextualized scripts
